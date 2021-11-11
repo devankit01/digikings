@@ -1,0 +1,350 @@
+{% extends 'home/layout.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/home/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/ecom/index.css' %}" />
+
+{% endblock %} {% block body %}
+
+<!-- Slider Start -->
+<div
+  id="carouselExampleFade"
+  class="carousel slide carousel-fade"
+  data-bs-ride="carousel"
+>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        src="{% static 'images/slide-1.jpeg' %}"
+        class="d-block w-100"
+        alt="..."
+      />
+      <div class="text__slider">
+        <h1 class="fw-bolder">
+          Best Quality Electronics best Prices @ 50% OFF
+        </h1>
+        <h3>Buy best Smart tech that will surprise you!</h3>
+        <button type="button" class="btn btn-outline-primary px-4 py-2 mt-2">
+          Shop Now
+        </button>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <img
+        src="{% static 'images/slide-3.jpeg' %}"
+        class="d-block w-100"
+        alt="..."
+      />
+      <div class="text__slider">
+        <h1 class="fw-bolder">Get the best services at your doorstep</h1>
+        <h3>Any Time Support ( 24 x 7 ) with same day services !</h3>
+        <button type="button" class="btn btn-outline-primary px-4 py-2 mt-2">
+          Explore Services
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Slider End -->
+
+<!-- About Company Start -->
+<section class="about p-2" id="about">
+  <div class="container pt-5 about__section">
+    <div class="row">
+      <div class="col-sm-6">
+        <img src="{% static 'images/work-6.jpeg' %}" class="w-100" alt="..." />
+      </div>
+      <div class="col-sm-6 about__text">
+        <h1 class="pb-2 fw-bolder">Welcome To Digikings Service Center</h1>
+
+        <div class="about__service">
+          <h4 class="fw-bolder">Digitech Institute</h4>
+          <p>
+            Ut enim ad minim veniam dolor sit amet consectetur adipisicing elit
+            sed do eiusmo tempor incididunt consectetur dolore magna aliqua.
+          </p>
+        </div>
+
+        <div class="about__service">
+          <h4 class="fw-bolder">Service Center</h4>
+          <p>
+            Ut enim ad minim veniam dolor sit amet consectetur adipisicing elit
+            sed do eiusmo tempor incididunt consectetur dolore magna aliqua.
+          </p>
+        </div>
+        <div class="about__service">
+          <h4 class="fw-bolder">Electronic Store</h4>
+          <p>
+            Ut enim ad minim veniam dolor sit amet consectetur adipisicing elit
+            sed do eiusmo tempor incididunt consectetur dolore magna aliqua.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- About Company End -->
+
+<!-- Services Start -->
+<section class="service px-2 py-5 mt-5" style="background: rgb(247, 247, 247)">
+  <div class="container" style="background: rgb(247, 247, 247)">
+    <h1 class="text-center fw-bolder">Our Services</h1>
+    <span id="line"> </span>
+    <br />
+    <br />
+    <div class="row">
+      <div class="col-sm card__service">
+        <div class="mb-3" style="max-width: 20rem; border: none">
+          <h4>
+            <lord-icon
+              src="https://cdn.lordicon.com/qhgmphtg.json"
+              trigger="loop"
+              delay="1000"
+              colors="primary:#121331,secondary:#08a88a"
+              style="width: 50px; height: 50px"
+            >
+            </lord-icon>
+            Computer Service
+          </h4>
+
+          <p class="text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="">Learn More &rarr;</a>
+        </div>
+      </div>
+
+      <div class="col-sm card__service">
+        <div class="mb-3" style="max-width: 20rem; border: none">
+          <h4>
+            <lord-icon
+              src="https://cdn.lordicon.com/wrprwmwt.json"
+              trigger="loop"
+              colors="primary:#121331,secondary:#08a88a"
+              style="width: 50px; height: 50px"
+            >
+            </lord-icon>
+            Server Service
+          </h4>
+
+          <p class="text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="">Learn More &rarr;</a>
+        </div>
+      </div>
+
+      <div class="col-sm card__service">
+        <div class="mb-3" style="max-width: 20rem; border: none">
+          <h4>
+            <lord-icon
+              src="https://cdn.lordicon.com/slkvcfos.json"
+              trigger="loop"
+              colors="primary:#121331,secondary:#08a88a"
+              delay="1000"
+              style="width: 50px; height: 50px"
+            >
+            </lord-icon
+            >Electronic Store
+          </h4>
+
+          <p class="text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="">Learn More &rarr;</a>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm card__service">
+        <div class="mb-3" style="max-width: 20rem; border: none">
+          <h4>
+            <lord-icon
+              src="https://cdn.lordicon.com/krmfspeu.json"
+              trigger="loop"
+              colors="primary:#121331,secondary:#08a88a"
+              style="width: 50px; height: 50px"
+            >
+            </lord-icon>
+            Quality Work
+          </h4>
+
+          <p class="text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="">Learn More &rarr;</a>
+        </div>
+      </div>
+      <div class="col-sm card__service">
+        <div class="mb-3" style="max-width: 20rem; border: none">
+          <h4>
+            <lord-icon
+              src="https://cdn.lordicon.com/kbtmbyzy.json"
+              trigger="loop"
+              colors="primary:#121331,secondary:#08a88a"
+              style="width: 50px; height: 50px"
+            >
+            </lord-icon>
+            24 x 7 Service
+          </h4>
+
+          <p class="text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="">Learn More &rarr;</a>
+        </div>
+      </div>
+
+      <div class="col-sm card__service">
+        <div class="mb-3" style="max-width: 20rem; border: none">
+          <h4>
+            <lord-icon
+              src="https://cdn.lordicon.com/eszyyflr.json"
+              trigger="loop"
+              colors="primary:#121331,secondary:#08a88a"
+              delay="1000"
+              style="width: 50px; height: 50px"
+            >
+            </lord-icon
+            >Cool Staff
+          </h4>
+
+          <p class="text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+          <a href="">Learn More &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Services End -->
+
+<!-- Call Now -->
+<div class="container-fluid bg-primary text-white">
+  <div class="container py-5 call__now">
+    <div class="row">
+      <div class="col-sm">
+        <h4>Find out all repair services we offer.</h4>
+        <h3>Do You Need A Support or Repair Your Device ?</h3>
+
+        <a href="tel:+91 8081433972"
+          ><button type="button" class="btn btn-outline-secondary px-5 py-2">
+            Call Now
+          </button></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<!--  -->
+
+<!-- Why Choose us Start -->
+<section
+  class="service choose__us px-2 py-5 mt-5">
+  <div class="container">
+    <h1 class="text-center fw-bolder">Why Choose us</h1>
+    <span id="line"> </span>
+    <br />
+    <br />
+    <div class="row">
+      <div class="col-sm card__service">
+        <div class="mb-3" style="max-width: 20rem; border: none">
+          <div class="choose__card">
+            <div class="choose__card__child"><i class="bi bi-cloud"></i></div>
+            <div class="choose__card__child">
+              <h4>Professional Team</h4>
+              <span >
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm card__service"> 
+        <div class="mb-3" style="max-width: 20rem; border: none">
+          <div class="choose__card">
+            <div class="choose__card__child"><i class="bi bi-cash"></i></div>
+            <div class="choose__card__child">
+              <h4>Cost Effective</h4>
+              <span >
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm card__service">
+        <div class="mb-3" style="max-width: 20rem; border: none">
+          <div class="choose__card">
+            <div class="choose__card__child"><i class="bi bi-nut"></i></div>
+            <div class="choose__card__child">
+              <h4>Quality Work</h4>
+              <span >
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm card__service"> 
+        <div class="mb-3" style="max-width: 20rem; border: none">
+          <div class="choose__card">
+            <div class="choose__card__child"><i class="bi bi-lightning-charge"></i></div>
+            <div class="choose__card__child">
+              <h4>Fast Delievery</h4>
+              <span >
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm card__service">
+        <div class="mb-3" style="max-width: 20rem; border: none">
+          <div class="choose__card">
+            <div class="choose__card__child"><i class="bi bi-clock"></i></div>
+            <div class="choose__card__child">
+              <h4>24 x 7 Service</h4>
+              <span >
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm card__service"> 
+        <div class="mb-3" style="max-width: 20rem; border: none">
+          <div class="choose__card">
+            <div class="choose__card__child"><i class="bi bi-person"></i></i></div>
+            <div class="choose__card__child">
+              <h4>Cool Staff</h4>
+              <span >
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Services End -->
+{% endblock %}

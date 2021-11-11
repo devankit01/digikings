@@ -1,0 +1,341 @@
+{% extends 'adminPanel/home.html' %} {% load static %} {% block subtitle %}
+<title>DigiKings | Edit Service</title>
+{% endblock %} {% block servicebody %}
+<h2>Edit Service</h2>
+<hr />
+<form method="POST">
+  {% csrf_token %}
+  <div class="row">
+    <div class="container shadow">
+      <h3>Customer Details</h3>
+
+      <div class="row">
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Customer Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Customer Name"
+              name="customer_name"
+              value="{{i.customer.Name}}"
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Phone Number</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Phone Number"
+              name="customer_phone"
+              value="{{i.customer.phone}}"
+
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Email</label>
+            <input type="email" class="form-control" placeholder="Email" 
+            name="customer_email"
+            value="{{i.customer.email}}"
+
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleTextarea" class="form-label mt-4"
+              >Customer Address</label
+            >
+            <textarea
+              class="form-control"
+              id="exampleTextarea"
+              rows="3"
+              name="customer_address"
+     
+            >{{i.customer.address}}</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container shadow mt-5">
+      <h3>Product Details</h3>
+
+      <div class="row">
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Product Brand</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Product Brand"
+              name="product_brand"
+              value="{{i.Brand}}"
+ 
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Type ( Branded/ Assembled )</label>
+            <select class="form-select" id="exampleSelect1" name="product_type">
+
+              {% if i.DesktopType == 'Branded' %}
+              <option value="Branded" selected>Branded</option>
+              <option value="Assembled">Assembled</option>
+
+              {% else %}
+              <option value="Branded" >Branded</option>
+              <option value="Assembled" selected>Assembled</option>
+              {% endif %}
+
+
+            </select>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Laptop/Desktop</label>
+            <select class="form-select" id="exampleSelect1" name="product_category">
+                {% if i.DesktopCategory == 'Laptop' %}
+                <option value="Laptop" selected>Laptop</option>
+                <option value="Desktop">Desktop</option>
+  
+                {% else %}
+                <option value="Laptop" >Laptop</option>
+                <option value="Desktop" selected>Desktop</option>
+                {% endif %}
+
+
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Submit Date</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Submit Date"
+              name="submit_date"
+              value="{{i.Submit_date}}"
+
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Submit Month</label>
+            <select name="submit_month" class="form-control">
+              <option selected value="{{i.Submit_month}}"> Selected : {{i.Submit_month}}</option>
+              <option  value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Submit Year</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Submit Year"
+              name="submit_year"
+              value="{{i.Submit_year}}"
+
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Total Amount</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Total Amount"
+              name="total_amount"
+              value="{{i.total_amount}}"
+              
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Paid Amount</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Paid Amount"
+              name="paid_amount"
+              value="{{i.paid_amount}}"
+
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Pending Amount</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Pending Amount"
+              name="pending_amount"
+              value="{{i.residual_amount}}"
+
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <div class="form-group mt-4">
+            <div class="form-check">
+              <h6>
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+ 
+                  id="flexCheckDefault"
+                  name="is_Paid"
+                  {% if i.is_fullyPaid %} checked {% endif %}
+                />
+                <label class="form-check-label mt-0" for="flexCheckDefault">
+                  Paid Completely
+                </label>
+              </h6>
+            </div>
+          </div>
+        </div>
+        <div class="col-md">
+    
+        </div>
+
+        <div class="col-md"></div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleTextarea" class="form-label mt-4">Problem</label>
+            <textarea
+              class="form-control"
+              id="exampleTextarea"
+              rows="3"
+              name="problem"
+            >{{i.Problem}}</textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Return Date</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Return Date"
+              name="return_date"
+              value="{{i.return_date}}"
+
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Return Month</label>
+            <select name="return_month" class="form-control">
+                <option selected value="{{i.return_month}}"> Selected : {{i.return_month}}</option>
+              <option value="January">January</option>
+              <option value="February">February</option>
+              <option value="March">March</option>
+              <option value="April">April</option>
+              <option value="May">May</option>
+              <option value="June">June</option>
+              <option value="July">July</option>
+              <option value="August">August</option>
+              <option value="September">September</option>
+              <option value="October">October</option>
+              <option value="November">November</option>
+              <option value="December">December</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Return Year</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Return Year"
+              name="return_year"
+              value="{{i.return_year}}"
+
+            />
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="container shadow mt-5">
+      <h3>Reference Details</h3>
+
+      <div class="row">
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Reference Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Reference Name"
+              name="reference_name"
+              value="{{i.reference.Name}}"
+
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Phone Number</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Phone Number"
+              name="reference_phone"
+              value="{{i.reference.phone}}"
+
+
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary w-40 mt-5" type="Submit">Submit Now</button>
+</form>
+
+{% endblock %}

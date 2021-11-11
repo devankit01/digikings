@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{% static 'bs3.css' %}">
+    <title>DigiKings.in</title>
+    {% block head %} {% endblock %}
+</head>
+<body>
+
+    <!-- NavBar -->
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary ml-auto" style="background: #000;">
+        <div class="container">
+          <a class="navbar-brand" href="#">DigiKings</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'home' %}">Home
+      
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Services</a>
+                <div class="dropdown-menu">
+                  <a class="dropdown-item" href="">Digitech Institute</a>
+                  <a class="dropdown-item" href="">Service Center</a>
+                  <a class="dropdown-item" href="">E-Store</a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="#about">About us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'signin' %}">Login</a>
+              </li>
+         
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-sm-2 px-4 py-2" type="text" placeholder="Search"  autocomplete="off">
+              <button class="btn btn-secondary px-3 py-2" type="submit"><i class="bi bi-search"></i></button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+      <!--  -->
+    {% block body %} {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" ></script>
+    <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+</body>
+</html>

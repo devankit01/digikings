@@ -1,0 +1,72 @@
+{% extends 'adminPanel/home.html' %} {% load static %} {% block subtitle %}
+<title>DigiKings | Add New Service</title>
+{% endblock %} {% block servicebody %}
+<h2>All Services</h2>
+<hr />
+
+<div class="row">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <h5>
+        <th scope="col">Sno.</th>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Device</th>
+        <th scope="col">Submit Date</th>
+        <th scope="col">Return Date</th>
+        <th scope="col">Total Amount</th>
+        <th scope="col">Paid Amount</th>
+        <th scope="col">Due Amount</th>
+        <th scope="col">Action</th>
+        <th scope="col">Referral</th>
+      </h5>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in services %}
+      <tr class="m-2 p-2">
+        <h5>
+        <th scope="row"> {{ forloop.counter }}</th>
+        <td>{{i.customer.Name}} | {{i.customer.phone}}</td>
+        <td>{{i.Brand}} ({{i.DesktopCategory}}) | {{i.DesktopType}}</td>
+        <td>{{i.Submit_date}} {{i.Submit_month}}, {{i.Submit_year}}</td>
+        <td>{{i.return_date}} {{i.return_month}}, {{i.return_year}}</td>
+        <td>&#8377; {{i.total_amount}}</td>
+        <td>&#8377; {{i.paid_amount}}</td>
+        <td>&#8377; {{i.residual_amount}}</td>
+        <td><a href="{% url 'EditService' id=i.id %}">Edit</a></td>
+        <td>{{i.reference.Name}}</td>
+      </h5>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <!-- {% for i in services %}
+    <div class="col-6 shadow">
+        <h5 class="text-bold">Customer Details</h5>
+        <h6>
+        <ul>
+            <li class="p-0 m-0 m-1 ">{{i.customer.Name}}</li>
+            <li class="p-0 m-0  m-1 "> {{i.customer.phone}}</li>
+            <li class="p-0 m-0  m-1"> {{i.customer.email}}</li>
+            <li class="p-0 m-0  m-1">{{i.customer.address}}</li>
+        </ul>
+    </h6>
+
+        <hr>
+        <h5>Service Description</h5>
+        <h6>
+        <ul>
+        <li class="p-0 m-0 m-1 ">Brand : {{i.Brand}} </li>
+        <li class="p-0 m-0  m-1">Type : {{i.DesktopType}} </li>
+        <li class="p-0 m-0  m-1">Category : {{i.DesktopCategory}} </li>
+        <li class="p-0 m-0 m-1 ">Problem  : {{i.Problem}} </li>
+    </h6>
+    </ul>
+
+    </div>
+
+    {% endfor %} -->
+</div>
+
+{% endblock %}

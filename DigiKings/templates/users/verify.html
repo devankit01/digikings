@@ -1,0 +1,20 @@
+{% extends 'home/layout.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/home/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/ecom/index.css' %}" />
+<title>DigiKings | Verification</title>
+{% endblock %} 
+
+{% load crispy_forms_tags %}
+{% block body %}
+
+
+
+<div class="container mt-4">
+    <h3>Your account has been successfully verified.</h3>
+    <p>Please click to <a href="{% url 'signin' %}">Login now</a></p>
+</div>
+
+
+<!-- Why Choose us Start -->
+
+{% endblock %}

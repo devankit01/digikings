@@ -1,0 +1,68 @@
+{% extends 'home/layout.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/home/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/ecom/index.css' %}" />
+<title>DigiKings | Profile</title>
+{% endblock %} 
+
+{% load crispy_forms_tags %}
+{% block body %}
+
+
+
+<div class="container mt-4">
+    <h3>Profile Page</h3>
+    {% if status %}
+    <div>
+        <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal">Incomple Profile</a>
+    </div>
+    {% endif %}
+    <p><a href="{% url 'logout' %}">Logout</a></p>
+</div>
+<div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Incompleted Profile</h5>
+
+            </div>
+            <div class="modal-body">
+              <form action="{% url 'Profile_Completed' %}" method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Genders</label>
+                  <select class="form-select" name="Gender" aria-label="Default select example">
+                    <option selected value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+              
+                  </select>
+                </div>
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label">Pin Code:</label>
+                  <input type="number" name="pin_code"class="form-control" id="exampleFormControlInput1" >
+                </div>
+                <div class="mb-3">
+                    <label for="message-text" class="col-form-label">Country</label>
+                    <input type="text" name="Country" class="form-control" id="exampleFormControlInput1" >
+                  </div>
+                  <div class="mb-3">
+                    <label for="message-text" class="col-form-label">Location</label>
+                    <input type="text" name="Location" class="form-control" id="exampleFormControlInput1" >
+                  </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Send message</button>
+                  </div>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </div>
+</div>
+
+
+<!-- Why Choose us Start -->
+
+{% endblock %}

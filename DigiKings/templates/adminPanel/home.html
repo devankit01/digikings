@@ -1,0 +1,158 @@
+{% extends 'home/layout.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/home/style.css' %}" />
+<link rel="stylesheet" href="{% static 'css/ecom/index.css' %}" />
+<link rel="stylesheet" href="{% static 'css/user/style.css' %}" />
+<!-- <link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+  crossorigin="anonymous"
+/> -->
+<link
+  href="https://use.fontawesome.com/releases/v5.0.6/css/all.css"
+  rel="stylesheet"
+/>
+<title>DigiKings | Admin</title>
+{% endblock %} {% load crispy_forms_tags %} {% block body %}
+
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+    <i class="fas fa-bars"></i>
+  </a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <a href="#">Digikings</a>
+        <div id="close-sidebar">
+          <i class="fas fa-times"></i>
+        </div>
+      </div>
+      <div class="sidebar-header">
+        <div class="user-pic">
+          <img
+            class="img-responsive img-rounded"
+            src="https://raw.githubusercontent.com/azouaoui-med/pro-sidebar-template/gh-pages/src/img/user.jpg"
+            alt="User picture"
+          />
+        </div>
+        <div class="user-info">
+          <span class="user-name">
+            <strong>Administrator</strong>
+          </span>
+          <span class="user-role">Arun Sir</span>
+        </div>
+      </div>
+      <!-- sidebar-header  -->
+      <div class="sidebar-search"></div>
+      <!-- sidebar-search  -->
+      <div class="sidebar-menu">
+        <ul>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-shopping-cart"></i>
+              <span>E-commerce</span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="#">Products</a>
+                </li>
+                <li>
+                  <a href="#">Orders </a>
+                </li>
+                <li>
+                  <a href="#">Delivered</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="far fa-gem"></i>
+              <span>Service Center</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="{% url 'AllServices' %}">All Services</a>
+                </li>
+                <li>
+                  <a href="{% url 'AddNew' %}">Add New Service</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="header-menu">
+            <span>Extra</span>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-book"></i>
+              <span>Website</span>
+              <!-- <span class="badge badge-pill badge-primary">Beta</span> -->
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-calendar"></i>
+              <span>Administrator</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fa fa-calendar"></i>
+              <span>Logout</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <!-- sidebar-menu  -->
+    </div>
+  </nav>
+  <!-- sidebar-wrapper  -->
+  <main class="page-content">
+    <div class="container-fluid">
+     {% block servicebody %}{% endblock %}
+    </div>
+  </main>
+  <!-- page-content" -->
+</div>
+<!-- page-wrapper -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"
+></script>
+<script>
+  jQuery(function ($) {
+    $(".sidebar-dropdown > a").click(function () {
+      $(".sidebar-submenu").slideUp(200);
+      if ($(this).parent().hasClass("active")) {
+        $(".sidebar-dropdown").removeClass("active");
+        $(this).parent().removeClass("active");
+      } else {
+        $(".sidebar-dropdown").removeClass("active");
+        $(this).next(".sidebar-submenu").slideDown(200);
+        $(this).parent().addClass("active");
+      }
+    });
+
+    $("#close-sidebar").click(function () {
+      $(".page-wrapper").removeClass("toggled");
+    });
+    $("#show-sidebar").click(function () {
+      $(".page-wrapper").addClass("toggled");
+    });
+  });
+</script>
+<!-- Why Choose us Start -->
+
+{% endblock %}
