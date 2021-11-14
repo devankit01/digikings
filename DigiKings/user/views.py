@@ -121,6 +121,15 @@ def signin(request):
             print(uname, pwd)
 
             uid = User.objects.get(username=uname)
+
+            # USER is SuperUser
+            print(uid.is_superuser)
+            user_authenticate = auth.authenticate(username=uname, password=pwd)
+
+            if uid.is_superuser:
+                auth.login(request, user_authenticate)
+                request.session['username'] = uname
+                return redirect('AllServices')
             profile = Profile.objects.get(username=uid)
             if profile.is_verified:
 
@@ -183,7 +192,8 @@ def checkLogin(request):
         return False
 
 
-
+def Error404(request):
+    return render(request, 'users/404.html')
 
 
 
