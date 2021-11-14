@@ -1,0 +1,103 @@
+{% extends 'adminPanel/home.html' %} {% load static %} {% block subtitle %}
+<title>DigiKings | Add New Service</title>
+{% endblock %} {% block servicebody %}
+<h2>Edit  Member</h2>
+<hr />
+<form method="POST" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="row">
+    <div class="container shadow">
+      <h3>Member Details</h3>
+
+      <div class="row">
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Member Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Member Name"
+              name="member_name"
+              value="{{i.Name}}"
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Phone Number</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Phone Number"
+              name="member_phone"
+              value="{{i.Phone}}"
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              name="member_email"
+              value="{{i.Email}}"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label class="form-label mt-4">Profile Pic</label>
+            <input type="file" class="form-control" name="member_pic" />
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label class="form-label mt-4">Designation</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Designation"
+              name="member_post"
+              value="{{i.Post}}"
+            />
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="form-group">
+            <label class="form-label mt-4">Salary</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Salary"
+              name="member_salary"
+              value="{{i.Salary}}"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleTextarea" class="form-label mt-4"
+              >Member Address</label
+            >
+            <textarea
+              class="form-control"
+              id="exampleTextarea"
+              rows="3"
+              name="member_address"
+            >{{i.Address}}</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary w-40 mt-4" type="Submit">Update Member</button>
+</form>
+
+{% endblock %}

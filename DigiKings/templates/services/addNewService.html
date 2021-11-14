@@ -268,34 +268,25 @@
       <div class="row">
         <div class="col-md">
           <div class="form-group">
-            <label class="form-label mt-4">Reference Name</label>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Reference Name"
-              name="reference_name"
-            />
+            <label class="form-label mt-4">Reference Retailer</label>
+            <select name="retailer" class="form-control" required>
+              <option >Select Retailer</option>
+              {% for i in retail %}
+              <option value="{{i.Name}}">{{i.Name}}</option>
+              {% endfor %}
+  
+            </select>
           </div>
         </div>
         <div class="col-md">
-          <div class="form-group">
-            <label class="form-label mt-4">Phone Number</label>
-            <input
-              type="number"
-              class="form-control"
-              placeholder="Phone Number"
-              name="reference_phone"
-
-            />
-          </div>
         </div>
         <div class="col-md">
-          <div class="form-group"></div>
+         
         </div>
       </div>
     </div>
   </div>
-  <button class="btn btn-primary w-40 mt-5" type="Submit">Submit Now</button>
+  <button class="btn btn-primary w-40 mt-5" type="Submit">Add Service</button>
 </form>
 
 {% endblock %}

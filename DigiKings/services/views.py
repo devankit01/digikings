@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import *
 # Create your views here.
 
 
 def AddNew(request):
+    retail = RetailerModel.objects.all()
+
     if request.method == 'POST':
         # Customer
         customer_name = request.POST.get('customer_name')
@@ -16,12 +18,7 @@ def AddNew(request):
         customer_obj.save()
 
         # Reference
-        reference_name = request.POST.get('reference_name')
-        reference_phone = request.POST.get('reference_phone')
-        print(reference_name, reference_phone)
-        reference_obj = ReferenceModel(
-            Name=reference_name, phone=reference_phone)
-        reference_obj.save()
+
 
         # Product
         product_brand = request.POST.get('product_brand')
@@ -41,6 +38,10 @@ def AddNew(request):
         return_date = request.POST.get('return_date')
         return_month = request.POST.get('return_month')
         return_year = request.POST.get('return_year')
+        retailer = request.POST.get('retailer')
+        retail_obj = RetailerModel.objects.get(Name = retailer)
+
+
 
         print(total_amount, paid_amount, pending_amount,
               problem, return_date, return_month, return_year)
@@ -65,12 +66,12 @@ def AddNew(request):
             Submit_year=submit_year, total_amount=total_amount, paid_amount=paid_amount,
             residual_amount=pending_amount, is_fullyPaid=is_Paid,
             return_date=return_date, return_month=return_month, return_year=return_year,
-            customer=customer_obj, reference=reference_obj)
+            customer=customer_obj, reference=retail_obj)
         service_obj.save()
 
-        return render(request, 'services/addNewService.html')
+        return render(request, 'services/addNewService.html',{'retail' : retail})
 
-    return render(request, 'services/addNewService.html')
+    return render(request, 'services/addNewService.html',{'retail' : retail})
 
 
 def AllServices(request):
@@ -79,6 +80,8 @@ def AllServices(request):
 
 
 def EditService(request, id):
+    retail = RetailerModel.objects.all()
+
     i = ServiceModel.objects.get(id=id)
 
     if request.method == 'POST': 
@@ -89,9 +92,10 @@ def EditService(request, id):
         i.customer.address = request.POST.get('customer_address')
         i.customer.save()
 
-        i.reference.Name = request.POST.get('reference_name')
-        i.reference.phone = request.POST.get('reference_phone')
-        i.reference.save()
+        retailer = request.POST.get('retailer')
+        print("Retailer : ",retailer)
+        retail_obj = RetailerModel.objects.get(Name = retailer)
+        i.reference = retail_obj
 
         i.Brand = request.POST.get('product_brand')
         i.DesktopType = request.POST.get('product_type')
@@ -118,5 +122,90 @@ def EditService(request, id):
 
         i.save()
 
-        return render(request, 'services/EditService.html', {'i': i})
-    return render(request, 'services/EditService.html', {'i': i})
+        return redirect('AllServices')
+    return render(request, 'services/EditService.html', {'i': i,'retail' : retail})
+
+
+
+
+
+# Retailer
+
+def AddRetailer(request):
+    retail = RetailerModel.objects.all()
+    if request.method == 'POST':
+        retailer_name = request.POST.get('retailer_name')
+        retailer_phone = request.POST.get('retailer_phone')
+        retailer_email = request.POST.get('retailer_email')
+        retailer_address = request.POST.get('retailer_address')
+        count = len(retail)
+
+        id = 'DIGIRETAILER-' + str(int(count+101))
+
+        obj = RetailerModel(ID = id, Name = retailer_name,
+        Email = retailer_email, Phone = retailer_phone, Address = retailer_address)
+        obj.save()
+        return redirect('AllRetailer')
+        
+    return render(request, 'services/addNewRetailer.html')
+
+
+
+def AllRetailer(request):
+    retail = RetailerModel.objects.all()
+    return render(request, 'services/AllRetailers.html',{'retail': retail})
+
+
+def EditRetailer(request,id):
+    i = RetailerModel.objects.get(ID=id)
+    if request.method == 'POST':
+        i.Name = request.POST.get('retailer_name')
+        i.Email = request.POST.get('retailer_email')
+        i.Phone = request.POST.get('retailer_phone')
+        i.Address = request.POST.get('retailer_address')
+        i.save()
+        return redirect('AllRetailer')
+    return render(request, 'services/EditRetailer.html',{'i' : i})
+
+
+def AddTeam(request):
+    retail = TeamModel.objects.all()
+    if request.method == 'POST':
+        member_name = request.POST.get('member_name')
+        member_phone = request.POST.get('member_phone')
+        member_email = request.POST.get('member_email')
+        member_address = request.POST.get('member_address')
+        member_salary = request.POST.get('member_salary')
+        member_post = request.POST.get('member_post')
+        member_pic = request.FILES.get('member_pic')
+        count = len(retail)
+
+        id = 'DIGIEMP-' + str(int(count+101))
+        print(id, member_name, member_phone, member_email, member_address, member_salary, member_post , member_pic)
+
+        obj = TeamModel(ID = id, Name = member_name,
+        Email = member_email, Phone = member_phone, Address = member_address, Salary = member_salary , Post = member_post, ProfilePic = member_pic)
+        obj.save()
+        return redirect('AllTeam')
+    return render(request, 'services/addNewTeam.html')
+
+
+def AllTeam(request):
+    team = TeamModel.objects.all()
+
+    return render(request, 'services/AllTeam.html',{'team' :team})
+
+
+def EditTeam(request,id):
+    i = TeamModel.objects.get(ID=id)
+    if request.method == 'POST':
+        i.Name = request.POST.get('member_name')
+        i.Phone = request.POST.get('member_phone')
+        i.Email = request.POST.get('member_email')
+        i.Address = request.POST.get('member_address')
+        i.Salary = request.POST.get('member_salary')
+        i.Post = request.POST.get('member_post')
+        i.ProfilePic = request.FILES.get('member_pic')
+        i.save()
+        return redirect('AllTeam')
+    return render(request, 'services/EditTeam.html',{'i' : i})

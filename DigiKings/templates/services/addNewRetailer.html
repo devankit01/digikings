@@ -1,0 +1,67 @@
+{% extends 'adminPanel/home.html' %} {% load static %} {% block subtitle %}
+<title>DigiKings | Add New Service</title>
+{% endblock %} {% block servicebody %}
+<h2>Add New Retailer</h2>
+<hr />
+<form method="POST">
+  {% csrf_token %}
+  <div class="row">
+    <div class="container shadow">
+      <h3>Retailer Details</h3>
+
+      <div class="row">
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Retailer Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Retailer Name"
+              name="retailer_name"
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Phone Number</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Phone Number"
+              name="retailer_phone"
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Email</label>
+            <input type="email" class="form-control" placeholder="Email" 
+            name="retailer_email"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleTextarea" class="form-label mt-4"
+              >Retailer Address</label
+            >
+            <textarea
+              class="form-control"
+              id="exampleTextarea"
+              rows="3"
+              name="retailer_address"
+              
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+  <button class="btn btn-primary w-40 mt-4" type="Submit">Add Retailer</button>
+</form>
+
+{% endblock %}

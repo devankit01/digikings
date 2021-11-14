@@ -83,6 +83,39 @@
             </div>
           </li>
 
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="far fa-user"></i>
+              <span>Retailers</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="{% url 'AllRetailer' %}">All Retailers</a>
+                </li>
+                <li>
+                  <a href="{% url 'AddRetailer' %}">Add New Retailer</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="far fa-user"></i>
+              <span>Team Members</span>
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="{% url 'AllTeam' %}">All Members</a>
+                </li>
+                <li>
+                  <a href="{% url 'AddTeam' %}">Add New Member</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
           <li class="header-menu">
             <span>Extra</span>
           </li>

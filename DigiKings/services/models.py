@@ -9,9 +9,15 @@ class CustomerModel(models.Model):
     address = models.CharField(max_length=200, blank=True, null=True)
     
 
-class ReferenceModel(models.Model):
+# class ReferenceModel(models.Model):
+#     Name = models.CharField(max_length=200,blank=True, null=True )
+#     phone = models.CharField(max_length=200, blank=True, null=True)
+class RetailerModel(models.Model):
+    ID = models.CharField(max_length=200,primary_key=True)
     Name = models.CharField(max_length=200,blank=True, null=True )
-    phone = models.CharField(max_length=200, blank=True, null=True)
+    Phone = models.IntegerField(null=True)
+    Email = models.CharField(max_length=200, blank=True, null=True)
+    Address = models.CharField(max_length=200, blank=True, null=True)
 
 class ServiceModel(models.Model):
     id = models.CharField(max_length=10, primary_key = True)
@@ -34,6 +40,19 @@ class ServiceModel(models.Model):
     is_fullyPaid = models.BooleanField(default=False, blank=True, null=True)
 
     customer = models.ForeignKey(CustomerModel, on_delete = models.CASCADE)
-    reference = models.ForeignKey(ReferenceModel, on_delete = models.CASCADE)
+    reference = models.ForeignKey(RetailerModel, on_delete = models.CASCADE)
+
+
+# Team Members
+
+class TeamModel(models.Model):
+    ID = models.CharField(max_length=200,primary_key=True)
+    Name = models.CharField(max_length=200,blank=True, null=True )
+    Phone = models.IntegerField(null=True)
+    Email = models.CharField(max_length=200, blank=True, null=True)
+    Address = models.CharField(max_length=200, blank=True, null=True)
+    ProfilePic = models.ImageField(upload_to = 'profile/')
+    Salary = models.CharField( max_length =10 , blank=True, null=True, default = "Variable Salary")
+    Post = models.CharField(max_length=200, blank=True, null=True)
 
 
