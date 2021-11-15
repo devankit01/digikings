@@ -42,9 +42,9 @@
         </div>
       </div>
       <!-- sidebar-header  -->
-      <div class="sidebar-search"></div>
-      <!-- sidebar-search  -->
+  
       <div class="sidebar-menu">
+        <br/>
         <ul>
           <li class="sidebar-dropdown">
             <a href="#">
@@ -63,6 +63,27 @@
                 <li>
                   <a href="#">Delivered</a>
                 </li>
+         
+              </ul>
+            </div>
+          </li>
+
+          <li class="sidebar-dropdown">
+            <a href="#">
+              <i class="fa fa-shopping-cart"></i>
+              <span>Shop Sale</span>
+              <!-- <span class="badge badge-pill badge-danger">3</span> -->
+            </a>
+            <div class="sidebar-submenu">
+              <ul>
+                <li>
+                  <a href="{% url 'CreateShopSale' %}">Add Sale</a>
+                </li>
+                <li>
+                  <a href="#">All Sales </a>
+                </li>
+               
+         
               </ul>
             </div>
           </li>
@@ -83,6 +104,10 @@
             </div>
           </li>
 
+
+          <li class="header-menu">
+            <span>Extra</span>
+            
           <li class="sidebar-dropdown">
             <a href="#">
               <i class="far fa-user"></i>
@@ -115,9 +140,6 @@
               </ul>
             </div>
           </li>
-
-          <li class="header-menu">
-            <span>Extra</span>
           </li>
           <li>
             <a href="#">

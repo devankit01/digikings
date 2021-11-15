@@ -248,3 +248,26 @@ def checkSuperUser(request):
     else:
         print('No Login')
         return False
+
+
+def CreateShopSale(request):
+    if checkSuperUser(request):
+
+        if request.method == 'POST':
+                customer_name = request.POST.get('customer_name')
+                customer_phone = request.POST.get('customer_phone')
+                customer_email = request.POST.get('customer_email')
+                total_amount = request.POST.get('total_amount')
+                paid_amount = request.POST.get('paid_amount')
+                due_amount = request.POST.get('due_amount')
+                sale_date = request.POST.get('sale_date')
+                product = request.POST.get('product')
+
+                return render(request, 'services/addOfflineSale.html')
+        return render(request, 'services/addOfflineSale.html')
+    else:
+        return redirect('Error404')
+
+
+def AllShopSale(request):
+    return render(request, 'services/AllOfflineSale.html')

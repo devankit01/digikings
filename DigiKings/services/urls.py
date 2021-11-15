@@ -13,9 +13,13 @@ urlpatterns = [
   path('all_retailer', AllRetailer, name = 'AllRetailer'),
   path('edit_retailer/<id>', EditRetailer, name = 'EditRetailer'),
 
-    path('add_team', AddTeam, name = 'AddTeam'),
+  path('add_team', AddTeam, name = 'AddTeam'),
   path('all_team', AllTeam, name = 'AllTeam'), 
   path('edit_team/<id>', EditTeam, name = 'EditTeam'),
+
+  path('create_shop_sale', CreateShopSale, name='CreateShopSale'),
+  path('all_shop_sale', AllShopSale, name='AllShopSale'),
+
 
 
 

@@ -9,12 +9,14 @@
     <thead>
       <tr>
         <h5>
-        <th scope="col">Member Pic</th>
-        <th scope="col">Member ID</th>
-        <th scope="col">Member Name</th>
-        <th scope="col">Member Phone </th>
-        <th scope="col">Member  Email</th>
-        <th scope="col">Member  Address</th>
+        <th scope="col"> Pic</th>
+        <th scope="col"> ID</th>
+        <th scope="col"> Name</th>
+        <th scope="col"> Phone </th>
+        <th scope="col">  Email</th>
+        <th scope="col">  Address</th>
+        <th scope="col">  Post</th>
+        <th scope="col">  Salary</th>
         <th scope="col">Action</th>
 
       </h5>
@@ -30,6 +32,8 @@
         <td>{{i.Phone }}</td>
         <td>{{i.Email }}</td>
         <td>{{i.Address}}</td>
+        <td>{{i.Post}}</td>
+        <td>	&#8377; {{i.Salary}}</td>
  
         <td><a href="{% url 'EditTeam' id=i.ID %}"><i class="fa fa-edit"></i></a></td>
 

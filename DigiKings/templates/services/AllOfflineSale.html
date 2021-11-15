@@ -1,0 +1,45 @@
+{% extends 'adminPanel/home.html' %} {% load static %} {% block subtitle %}
+<title>DigiKings | Add New Service</title>
+{% endblock %} {% block servicebody %}
+<h2>All Shop Sales</h2>
+<hr />
+<div class="row" style="overflow: auto;">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <h5>
+        <th scope="col">Customer Name</th>
+        <th scope="col">Customer Phone</th>
+        <th scope="col">Product Name </th>
+        <th scope="col">Product Price</th>
+        <th scope="col">Total Amount</th>
+        <th scope="col">Paid Amount</th>
+        <th scope="col">Due Amount</th>
+        <th scope="col">Sale Date</th>
+        <th scope="col">Invoice</th>
+        <th scope="col">Action</th>
+
+      </h5>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in retail %}
+      <tr class="m-2 p-2">
+        <h5>
+        <th scope="row"> {{i.ID}}</th>
+        <td>{{i.Name}}</td>
+        <td>{{i.Phone }}</td>
+        <td>{{i.Email }}</td>
+        <td>{{i.Address}}</td>
+ 
+        <td><a href="{% url 'EditRetailer' id=i.ID %}"><i class="fa fa-edit"></i></a></td>
+
+      </h5>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+</div>
+
+{% endblock %}

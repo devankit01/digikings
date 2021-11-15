@@ -1,5 +1,5 @@
 from django.db import models
-
+from ecom.models import Product
 # Create your models here.
 
 class CustomerModel(models.Model):
@@ -56,3 +56,20 @@ class TeamModel(models.Model):
     Post = models.CharField(max_length=200, blank=True, null=True)
 
 
+
+# Offline Shop Sales
+class OfflineShopSale(models.Model):
+    CustomerName = models.CharField(max_length=200, null=True, blank=True)
+    CustomerPhone = models.CharField(max_length=200, null=True, blank=True)
+    CustomerEmail = models.CharField(max_length=200, null=True, blank=True)
+    TotalAmount = models.IntegerField(default = 0, null=True, blank=True)
+    PaidAmount = models.IntegerField(default = 0, null=True, blank=True)
+    DueAmount = models.IntegerField(default = 0, null=True, blank=True)
+    isPaid = models.BooleanField(default = False)
+    SaleDate = models.DateField(null=True, blank=True) 
+    Product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True, blank=True)
+
+
+# <tr><td>Date of Birth</td><td><input type="date" name="DOB" value="{{m.dob|date:"d/m/Y"}}" required=True></td></tr>
+
+# value="{{m.dob|date:'d/m/Y'}}" which must be specified as value="{{m.dob|date:'Y-m-d'}}"

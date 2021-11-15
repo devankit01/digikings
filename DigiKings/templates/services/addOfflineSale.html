@@ -1,0 +1,142 @@
+{% extends 'adminPanel/home.html' %} {% load static %} {% block subtitle %}
+<title>DigiKings | Add New Service</title>
+{% endblock %} {% block servicebody %}
+<h2>Add Offline Sale</h2>
+<hr />
+<form method="POST">
+  {% csrf_token %}
+  <div class="row">
+    <div class="container shadow">
+      <h3>Sale Details</h3>
+
+      <div class="row">
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Customer Name</label>
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Customer Name"
+              name="customer_name"
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Phone Number</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Phone Number"
+              name="customer_phone"
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Email"
+              name="customer_email"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Total Amount</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Total Amount"
+              name="total_amount"
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Paid Amount</label>
+            <input
+              type="number"
+              class="form-control"
+              placeholder="Paid Amount"
+              name="paid_amount"
+            />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Due Amount</label>
+            <input
+              type="email"
+              class="form-control"
+              placeholder="Due Amount"
+              name="due_amount"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Sale Date</label>
+            <input type="date" class="form-control" name="sale_date" />
+          </div>
+        </div>
+        <div class="col-md">
+          <div class="form-group">
+            <label class="form-label mt-4">Select Product</label>
+            <select name="retailer" class="form-control" required>
+              <option>Select Product</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md"></div>
+      </div>
+      <div class="row">
+        <div class="col-md">
+            <div class="form-group mt-4">
+              <div class="form-check">
+                <h5 class="mx-2">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+   
+                    id="flexCheckDefault"
+                    name="isPaid"
+                  />
+                  <label class="form-check-label mt-1" for="flexCheckDefault">
+                    Paid Completely
+                  </label>
+                </h5>
+              </div>
+            </div>
+          </div>
+        <div class="col-md"></div>
+        <div class="col-md"></div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label for="exampleTextarea" class="form-label mt-4"
+              >Customer Address</label
+            >
+            <textarea
+              class="form-control"
+              id="exampleTextarea"
+              rows="3"
+              name="customer_address"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary w-40 mt-4" type="Submit">Add Sale</button>
+</form>
+
+{% endblock %}
