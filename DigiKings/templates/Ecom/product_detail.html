@@ -1,0 +1,155 @@
+
+{% extends 'home/layout.html' %} {% load static %} {% block subtitle %}
+<title>DigiKings | Products</title>
+{% endblock %} 
+{% block body %}
+<main class="container my-4">
+	<!-- Featured Products -->
+	<h3 class="my-4 border-bottom pb-1">{{data.ProductName}}</h3>
+	<div class="row">
+		<!-- Images -->
+		<div class="col-md-4">
+			<img id="zoom_01"  src="{{data.Product_Image.url}}" style="height:270px; " class="card-img-top" alt="{{data.title}}">
+		</div>
+		<div class="col-md-8">
+			<p>{{data.Description}}</p>
+			<hr/>
+			<table class="table table-bordered">
+				<tr>
+					<th>Brand Names : </th>
+					<td>
+						{{data.Brand_name.Brand_Title}}
+					</td>
+				</tr>
+				<tr>
+					<th>Item Quality :</th>
+					<td>
+						{{data.Item_quality}}
+					</td>
+				</tr>
+				<tr>
+					<th>Price</th>
+					<th>INR {{data.Price_Product}}</th>
+				</tr>
+			</table>
+			<hr/>
+			<div class="input-group my-3" style="width:30%;">
+			  <input type="number" value="1" class="form-control " id="productQty" />
+			  <div class="input-group-append">
+			  	<!-- <input type="hidden" class="product-image-{{data.id}}" value="{{data.productattribute_set.first.image}}" />
+		          <input type="hidden" class="product-id-{{data.id}}" value="{{data.id}}" />
+		          <input type="hidden" class="product-title-{{data.id}}" value="{{data.title}}" /> -->
+			    <button class="btn btn-primary  add-to-cart" data-index="{{data.id}}" type="button" id="addToCartBtn"><i class="fa fa-shopping-cart"></i> Add to Cart</button>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<hr />
+	<div class="row">
+		<div class="col-md-6">
+			<h3 class="my-3">Detail</h3>
+			<!-- Detail -->
+			<table class="table table-bordered">
+				<tr>
+					<th>Brand</th>
+					<td><a href="/brand-product-list/{{data.brand.id}}"  style="color:black;text-decoration: none;">{{data.Brand_name.Brand_Title}}</a></td>
+				</tr>
+				<tr>
+					<th>Category</th>
+					<td ><a  href="/category-product-list/{{data.category.id}}" style="color:black;text-decoration: none;">{{data.category.categories}}</a></td>
+				</tr>
+
+			</table>
+		</div>
+		<!-- Reviews -->
+		<div class="col-md-6">
+			<h3 class="my-3">Reviews - <span class="avg-rating">4.5</span>/5 <i class="fa fa-star text-warning"></i>
+				
+                <button  type="button" class="btn btn-warning btn-sm float-right reviewBtn"data-bs-toggle="modal" data-bs-target="#productReview">
+                    Add Review
+                  </button>
+			
+			</h3>
+
+	<!-- Product Review -->
+	<div class="modal fade" id="productReview" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Add Product Review</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" >
+                    {% csrf_token %}
+                    <table class="table table-bordered">
+                        
+                        <tr>
+                            <td colspan="2">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <input type="reset" class="btn btn-dark" value="Reset" id="reset" />
+                            </td>
+                        </tr>
+                    </table>
+                    <p class="ajaxRes"></p>
+            </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+  
+  
+	<!-- Product Review End -->
+
+		
+			<div class="card">
+				<div class="card-body " style="max-height: 400px; overflow: auto;">
+					
+					<figure class="blockquote text-end">
+						<blockquote class="blockquote text-end">
+						  <small >It is awesome Product. It has 1 Year of warrenty lorem Integer Prodgessf</small>
+                        </blockquote>
+						  <footer class="blockquote-footer ">piyush awasthi
+						  	<cite title="Source Title">
+						  		<i class="fa fa-star text-warning"></i>
+                                  <i class="fa fa-star text-warning"></i>
+                                  <i class="fa fa-star text-warning"></i>
+								
+						  	</cite>
+						  </footer>
+						</figure>
+						<hr />
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Related Products -->
+	<h3 class="mt-4 mb-3 border-bottom pb-1">Related Products</h3>
+	<div class="row">
+		{% for product in related_product %}
+		<div class="col-lg-3 col-sm-4 mb-4">
+			<div class="card shadow">
+			  <a style="color:black;text-decoration: none;" href="/Product-Detail/{{product.slug}}/{{product.id}}" ><img src="{{product.Product_Image.url}}" class="card-img-top" style="width:100%;height:200px"  alt=""></a>
+          
+              <div class="card-body">
+			    <h6 class="card-text">{{product.ProductName}}</h6>
+			  </div>
+			  <div class="card-footer">
+			  	<button class="btn btn-sm btn-primary"><i class="fa fa-shopping-cart"></i></button>
+			  
+			  	<span class="float-end">
+			  		4.2/5 
+			  		<i class="fa fa-star text-warning"></i>
+			  	</span>
+			  </div>
+            </a>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</main>
+{% endblock %}

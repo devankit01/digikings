@@ -1,0 +1,22 @@
+{% for i in products %}
+<div class="card shadow m-1 mb-3 p-0" style="width: 20rem;">
+    <a href="/Product-Detail/{{i.slug}}/{{i.id}}">
+    <img src="{{i.Product_Image.url}}" class="card-img-top mt-0 "style="width:100%;height:200px"  alt="..."></a>
+    <div class="card-body">
+      <h5 class="card-title">{{i.ProductName}}</h5>
+      <h6 style="font-weight:bold;">Rs. {{i.Price_Product}}</h6>
+      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-sm btn-primary float-left">Cart</button>
+       
+        <span class="float-end">
+        4.5/5
+        <i class="fa fa-star text-warning"></i>
+        </span>
+
+    </div>
+    
+  </div>
+  {% endfor %}
