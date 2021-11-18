@@ -31,6 +31,7 @@ $(document).ready(function(){
     });
 
     // end 
+    // Price Filteration start
     $("#maxPrice").on('blur',function(){
     
         var _min=$(this).attr('min');
@@ -46,5 +47,87 @@ $(document).ready(function(){
 
         }
     });
+
+    // Add to cart Start 
+    $(document).on('click','#addToCartBtn',function(){
+        var _vm=$(this);
+        var _Qty=$('#productQty').val();
+        var _productId=$('.product-id').val();
+        var _productTitle=$('.product-title').val();
+        var _Price_product=$('#PriceProduct').text();
+        var _productImage=$('.product-image').val();
+        console.log(_Price_product);
+        $.ajax({
+            url:'/Add-to-cart',
+            data:{
+                'id':_productId,
+                'qty':_Qty,
+                'title':_productTitle,
+                'Price':_Price_product,
+                'image':_productImage,
+            },
+            dataType:'json',
+            beforeSend:function(){
+                _vm.attr('disabled',true);
+            },
+            success:function(res){
+                $('.cart-list').text(res.totaItems);
+                
+                
+                _vm.attr('disabled',false);
+            }
+        });
+
+    });
+    // end 
+    // Delete item from cart
+    $(document).on('click','.delete-item',function(){
+        console.log("hello");
+        var _pid=$(this).attr('data-item');
+        var _vm=$(this);
+        $.ajax({
+            url:'/Delete-Cart-item',
+            data:{
+                'id':_pid,
+                
+            },
+            dataType:'json',
+            beforeSend:function(){
+                _vm.attr('disabled',true);
+            },
+            success:function(res){
+                $('.cart-list').text(res.totaItems);
+                $('#cartList').html(res.data);
+                _vm.attr('disabled',false);
+            }
+        });
+    });
+// end 
+// update item from item
+       
+$(document).on('click','.update-item',function(){
+    console.log("hello");
+    var _pid=$(this).attr('data-item');
+    var _vm=$(this);
+    var _pQty=$('.product-qty-'+_pid).val();
+
+    $.ajax({
+        url:'/Update-Cart-item',
+        data:{
+            'id':_pid,
+            'qty':_pQty
+        },
+        dataType:'json',
+        beforeSend:function(){
+            _vm.attr('disabled',true);
+        },
+        success:function(res){
+           
+            $('#cartList').html(res.data);
+            _vm.attr('disabled',false);
+        }
+    });
+});
+
 });
 
