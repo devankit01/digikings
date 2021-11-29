@@ -4,7 +4,10 @@
 {% endblock %} 
 {% block body %}
 <main class="container my-4">
-	
+	<div class="Review_class alert alert-dismissible alert-success d-none" id="Review_alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        Successfully Added
+      </div>
 	<!-- Featured Products -->
 	<div class="row">
 	<div class="col ">
@@ -71,36 +74,55 @@
 			</table>
 		</div>
 		<!-- Reviews -->
+		
 		<div class="col-md-6">
 			<h3 class="my-3">Reviews - <span class="avg-rating">4.5</span>/5 <i class="fa fa-star text-warning"></i>
-				
-                <button  type="button" class="btn btn-warning btn-sm float-right reviewBtn"data-bs-toggle="modal" data-bs-target="#productReview">
+				{% if request.user.is_authenticated %}
+		{% if ReviewAdd %}
+                <button  type="button" id="Add_reviewBtn" class="btn btn-warning btn-sm float-end reviewBtn"data-bs-toggle="modal" data-bs-target="#productReview">
                     Add Review
                   </button>
-			
+				  {% endif %}
+				  {% endif %}
 			</h3>
-
+			
+		
+			
 	<!-- Product Review -->
 	<div class="modal fade" id="productReview" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Add Product Review</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <button class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-                <form method="post" >
+                <form method='post' id="addForm" action="{% url 'Save_Review' data.id %}" >
                     {% csrf_token %}
                     <table class="table table-bordered">
-                        
-                        <tr>
-                            <td colspan="2">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                                <input type="reset" class="btn btn-dark" value="Reset" id="reset" />
-                            </td>
-                        </tr>
+                      
+							<div class="mb-3">
+							  <label for="exampleInputEmail1" class="form-label">Review Text</label>
+							  <textarea class="form-control" id="message" rows="3"></textarea>
+							</div>
+							<div class="mb-3">
+								<label for="exampleInputEmail1" class="form-label">Review Rating</label>
+							<div>
+								<span class="fa fa-star fa-2x starratings" id="1"></span>
+								<span class="fa fa-star fa-2x starratings" id="2"></span>
+								<span class="fa fa-star fa-2x starratings"id="3"></span>
+								<span class="fa fa-star fa-2x starratings" id="4"></span>
+								<span class="fa fa-star fa-2x starratings" id="5"></button>
+							</div>
+							</div>
+
+							<button type="submit" class="btn btn-success rounded float-end" id="reviewBtn">Submit</button>
+							<!-- <input type="reset" value="Reset" id="reset"/> -->
+                               
+						  
+                       
                     </table>
                     <p class="ajaxRes"></p>
             </form>
@@ -115,20 +137,23 @@
 
 		
 			<div class="card">
-				<div class="card-body " style="max-height: 400px; overflow: auto;">
+				<div class="card-body  " style="max-height: 400px; overflow: auto;">
 					
-					<figure class="blockquote text-end">
+					<figure class="blockquote text-end review-list">
+						{% for i in reviews %}
 						<blockquote class="blockquote text-end">
-						  <small >It is awesome Product. It has 1 Year of warrenty lorem Integer Prodgessf</small>
+						  <small >{{i.review_text}}</small>
                         </blockquote>
-						  <footer class="blockquote-footer ">piyush awasthi
+						  <footer class="blockquote-footer ">{{i.user.username.first_name}}
 						  	<cite title="Source Title">
+							
+							{% for star in i.review_rating|rjust:i.review_rating|make_list %}
+						
 						  		<i class="fa fa-star text-warning"></i>
-                                  <i class="fa fa-star text-warning"></i>
-                                  <i class="fa fa-star text-warning"></i>
-								
+							{% endfor %}
 						  	</cite>
 						  </footer>
+						{% endfor %}
 						</figure>
 						<hr />
 					
@@ -164,5 +189,7 @@
 {% endblock %}
 {% block query %}
 <script type="text/javascript" src="{% static 'js/product-filter.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'js/Reviewed.js' %}"></script>
 
 {% endblock %}

@@ -95,6 +95,9 @@ input {
   font-size: 14px;
   width:100%;
 }
+.checked{
+  color: orange;
+}
 @media (max-width: 858px) {
   .text__slider {
     position: absolute;

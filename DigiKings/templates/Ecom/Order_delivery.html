@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="{% static 'bs3.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home/call.css' %}">
+    <link rel="stylesheet" href="{% static 'css/home/footer.css' %}">
+    <link rel="stylesheet" href="{% static 'css/ecom/index.css' %}">
+    <title>DigiKings.in</title>
+    {% block head %} {% endblock %}
+</head>
+<style>
+    body {
+        background-color: #F1F3F6;
+    }
+</style>
+
+<body>
+
+    <!-- NavBar -->
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary ml-auto" style="background: #000;">
+            <div class="container">
+                <a class="navbar-brand fa-2x" href="#">DigiKings</a>
+            </div>
+        </nav>
+    </div>
+    <!-- end navbar -->
+    <div class="container mt-5 ">
+        <!-- login Section -->
+        <div class="card  shadow  " id="login_set">
+            <h4 class="card-header card-header-primary  text-white bg-primary"> Login</h4>
+
+            <div class="card-body">
+                <p class="card-text">Name <span style="color:black;font-weight:bold">Piyush Awasthi</span></p>
+                <p class="card-text">email <span style="color:black;font-weight:bold">PiyushAwasthi131@gmail.com</span>
+                </p>
+                <p><a href="#" style="text-decoration: none; color:#2874F0;font-weight:900;">Logout & Signin in to
+                        another account</a></p>
+                <a href="#" class="btn btn-primary" id="Continue_Login">Continue with checkout</a>
+            </div>
+        </div>
+        <!-- change section -->
+        <div class="card shadow d-none  " id="login_change">
+
+            <div class="body  p-3 " style="background-color:white; ">
+                <div class="row ">
+                    <div class="col-md-8 aligns-items-center">
+                        <h3>Login <i class="fa fa-check" style="color:green"></i></h3>
+                        <span style="font-weight: 600; color:black">piyush awasthi</span> - 9140955969
+                    </div>
+
+                    <div class="col-md-4 float-end align-self-center  px-2 ">
+                        <a href="#" class="btn float-end float-end text-center border "
+                            style="color:black;font-weight: 600;" id="Change_btn_login">CHANGE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end login Section -->
+
+        <!-- Delivery Section -->
+        <!-- Show Delivery add section -->
+        <div class="card  shadow mt-3 d-none" id="Delivery_set">
+            <h4 class="card-header card-header-primary  text-white text-cente bg-primary">Delivery Address</h4>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <p class="card-text">Name <span style="color:black;font-weight:bold">Piyush Awasthi</span></p>
+                        <p class="card-text">email <span
+                                style="color:black;font-weight:bold">PiyushAwasthi131@gmail.com</span></p>
+                        <P style="max-width: 550px;">610/261 Jugal vihar colony faizullahganj sitapur Road lucknow uttar
+                            pradesh - <span style="color:black;font-weight:bold">226020</span></P>
+                        <a href="#" class="btn btn-primary" id="Delivery_here_btn">DELIVERY HERE</a>
+                    </div>
+                    <div class="col-md-4">
+                        <a href="#" class="float-end"
+                            style="color:#2874F0; padding-right:40px; text-decoration: none;font-weight:bold; ">EDIT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end show delivery section -->
+        <!-- Hide Delivery section start  -->
+        <div class="card shadow mt-3 " id="Delivery_change">
+
+            <div class="body  p-3 " style="background-color:white; ">
+
+                <p class=" card-text align-self-center" style="color:grey;font-size: large;font-weight:bold">DELIVERY
+                    ADDRESS</p>
+
+            </div>
+        </div>
+        <!-- End of Delivery Section  -->
+        <!-- end Delivery Section -->
+        <!-- Order Summary -->
+        <div class="card  shadow mt-3 d-none" id="Order_sum_set">
+            <h4 class="card-header card-header-primary  text-white text-cente bg-primary">ORDER SUMMARY</h4>
+            <div class="card-body">
+                <!-- Card Begin -->
+                <div class="card mb-3" style="outline: none; border:none ">
+                    <div class="row g-0">
+                        <div class="col-md-2">
+                            <img src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dmlld3xlbnwwfHwwfHw%3D&w=1000&q=80"
+                                class="img-fluid rounded-start" alt="..." style="height:200px;width:250px">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h4 class="card-title" style="color:black;font-weight: 900;">Monitor</h4>
+                                <p class="card-text">Lorem ipsum is a placeholder text commonly used to demonstrate the
+                                    visual form of a document or a typeface without relying on meaningful content.</p>
+                                <h6 class="card-text" style="color:black;font-weight: 900;">INR : 2000</h6>
+                                <h6 class="card-text" style="color:black;font-weight: 900;">Items : 2</h6>
+                                <h6 class="card-text" style="color:black;font-weight: 900;">Quality : Second Hand</h6>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <!-- end Cards -->
+
+            </div>
+        </div>
+        <!-- end Order Summary -->
+        <!-- hide order summary begins -->
+        <div class="card shadow mt-3 " id="Order_summary_change">
+
+            <div class="body  p-3 " style="background-color:white; ">
+
+                <p class=" card-text align-self-center" style="color:grey;font-size: large;font-weight:bold">
+                    ORDER_SUMMARY</p>
+            </div>
+        </div>
+        <!-- end order summary begins -->
+        <!-- order Confirmation Section -->
+        <div class="card shadow mt-3 d-none " id="Order_summary_confirmation">
+
+            <div class="body  p-3 " style="background-color:white; ">
+                <div class="row " >
+                    <div class="col-md-8 d-flex aligns-items-center" >
+                        
+                        <p class="card-text align-self-center" style="font-weight: 600;  ">Confirmation mail will sent to <span style="color:black">Piyushawasthi131@gmail.com</span></p>
+                    </div>
+
+                    <div class="col-md-4 float-end align-self-center  px-2 ">
+                        <a href="#" id="Confirmation_button" class="btn float-end float-end text-center border "
+                            style="color:white;font-weight: 600;background-color:#FB641B;" >Confirm</a>
+                    </div>
+                </div>
+          
+            </div>
+        </div>
+        <!-- end order confirmation Section -->
+        <!-- Payment Option Confirmation  -->
+        <div class="card  shadow mt-3 d-none " id="payment_options_set">
+            <h4 class="card-header card-header-primary  text-white text-cente bg-primary">Payment Options</h4>
+            <div class="card-body">
+                <div class="card " style="border:none">
+                    <div class="card-body">
+                        <div class="card-title align-self-center form-check">
+                            <input class="form-check-input flexRadioDefault1" type="radio" name="flexRadioDefault" >&nbsp;
+                            <label class="form-check-label" for="flexRadioDefault1" style="color:#000;font-weight:bold;font-size:large">
+                              Online Mode
+                            </label>
+                          
+                        </div>
+                    </div>
+                   
+                </div>
+                <hr/>
+                <div class="card mt-2 " style="border:none">
+                    <div class="card-body">
+                        <div class="card-title align-self-center form-check">
+                            <input class="form-check-input flexRadioDefault1 " type="radio" name="flexRadioDefault" >&nbsp;
+                            <label class="form-check-label" for="flexRadioDefault1" style="color:#000;font-weight:bold;font-size:large">
+                              Cash On Delivery
+                            </label>
+                          
+                        </div>
+                    </div>
+                   
+                </div>
+                <hr/>
+                <div class="col-md-4 float-end align-self-center  px-2 ">
+                    <a href="#" class="btn float-end float-end text-center border disabled"
+                        style="color:white;font-weight: 600;background-color:#FB641B;" id="Payment_confirm_btn">Confirm</a>
+                </div>
+            </div>
+        </div>
+        <!-- end Payment Option  -->
+        <!-- Hide of payment options begin -->
+        <div class="card shadow mt-3 mb-3" id="Payment_options_change">
+
+            <div class="body  p-3 " style="background-color:white; ">
+
+                <p class=" card-text align-self-center" style="color:grey;font-size: large;font-weight:bold">
+                    PAYMENT OPTIONS</p>
+            </div>
+        </div>
+        <!-- hide of payment options end -->
+    </div>
+    </div>
+    <!-- ./Footer -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+    <script src="https://kit.fontawesome.com/590f0cf99b.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{% static 'js/Order_delivery.js' %}"></script>
+</body>
+
+</html>

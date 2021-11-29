@@ -12,6 +12,7 @@ urlpatterns = [
   path('Cart-Details/',Cart_View,name="Cart_View"),
   path('Delete-Cart-item/',Delete_Cart_item,name="Delete_Cart_item"),
   path('Update-Cart-item/',Update_cart_items,name="Update_cart_items"),
-
+  path('Cart-Details/<str:user>/checkout/',CheckOut,name="CheckOut"),
+  path('reviewed-save/<int:pid>/',Save_Review,name="Save_Review"),
 ]
 urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

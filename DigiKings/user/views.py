@@ -168,7 +168,7 @@ def profile(request):
             Profile_status=False
      
         return render(request, 'Users/profile.html',{'user': user,'status':Profile_status})
-    return redirect('signin')
+    return render(request, 'users/signin.html')
 
 def logout(request):
     

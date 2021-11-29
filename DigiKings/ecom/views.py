@@ -1,8 +1,10 @@
-from django.shortcuts import render
-from . models import Categories, Item_Quality, Product
-from django.http import JsonResponse,HttpResponse
+from django.shortcuts import render,get_object_or_404,HttpResponse
+from . models import Categories, Item_Quality, Product,Orders,CartOrderItems
+from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.db.models import Min, Max
+from .models import *
+from django.contrib.auth.models import User
 # Create your views here.
 def home(request):
     return render(request,'home/index.html')
@@ -40,7 +42,17 @@ def category_product_list(request,cat_id):
 def Product_Detail(request,slug,id):
     product=Product.objects.get(id=id)
     related_products=Product.objects.filter(category=product.category).exclude(id=id)[:3]
-    return render(request,'ecom/product_detail.html',{'data':product,'related_product':related_products})
+    canAdd=True
+    user = get_object_or_404(User, username=request.user)
+    users = get_object_or_404(Profile, username=user)
+    reviewCheck=ProductReviewed.objects.filter(user=users,Product=product).count()
+    if request.user.is_authenticated:
+        if reviewCheck>0:
+            canAdd=False
+
+    reviews=ProductReviewed.objects.filter(Product=product)
+    # print(reviews.review_text)
+    return render(request,'ecom/product_detail.html',{'data':product,'related_product':related_products,'ReviewAdd':canAdd,'reviews':reviews})
 
 
 def filterData(request):
@@ -128,3 +140,57 @@ def Update_cart_items(request):
     t=render_to_string('ecom/ajax_cart_list.html',{'cart_data':request.session['cartdata'],'totaItems':len(request.session['cartdata']),'total_amt':total_amount})
     
     return JsonResponse({'data':t,'totaItems':len(request.session['cartdata'])})
+
+
+def CheckOut(request,user):
+    total_amt=0
+    TotalAmt=0
+    # if 'cartdata' in request.session:
+    #     # orders 
+    #     for p_id,items in request.session['cartdata'].items():
+    #         TotalAmt+=int(items['qty'])*float(items['Price'])
+    #     user = get_object_or_404(User, username=request.user)
+    #     users = get_object_or_404(Profile, username=user)
+    #     order=Orders.objects.create(
+    #         customers=users,
+    #         total_amount=TotalAmt,
+           
+    #     )
+    #     # end 
+    #     # order Items
+    #     for p_id,items in request.session['cartdata'].items():
+    #         total_amt+=int(items['qty'])*float(items['Price'])
+    #         items=CartOrderItems.objects.create(
+    #             order=order,
+    #             invoice_No='INV-'+str(order.id),
+    #             item=items['title'],
+    #             quantity=items['qty'],
+    #             Image=items['image'],
+    #             Price=items['Price'],
+    #             Total=float(items['qty'])*float(items['Price'])
+    #         )
+    # **************for checking login***************
+    try:
+        user = get_object_or_404(User, username=request.user)
+        user = get_object_or_404(Profile, username=user)
+        if user:
+            return render(request,'ecom/Order_delivery.html')
+    except:
+        return redirect('signin')
+
+
+def Save_Review(request,pid):
+    print(pid)
+    rew_txt=request.POST['message']
+    print(request.POST['ratings'])
+    product=Product.objects.get(id=pid)
+    user = get_object_or_404(User, username=request.user)
+    users = get_object_or_404(Profile, username=user)
+    review=ProductReviewed.objects.create(user=users,Product=product,review_text=rew_txt,review_rating=request.POST['ratings'])
+    data={
+        'review_text':request.POST['message'],
+        'first_name':user.first_name,
+        'last_name':user.last_name,
+        'review_rating':int(request.POST['ratings'])
+    }
+    return JsonResponse({"data":data})

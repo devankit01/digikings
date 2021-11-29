@@ -57,10 +57,42 @@ class Orders(models.Model):
         ("Order Reject","Order Reject"),
     )
     customers=models.ForeignKey(Profile,on_delete=models.CASCADE)
-    Product_id=models.ForeignKey(Product,on_delete=models.CASCADE)
-    Status=models.CharField(max_length=200,choices=choices)
-    quantity=models.IntegerField( max_length=5)
+    order_dt=models.DateTimeField(auto_now_add=True)
+    total_amount=models.CharField(max_length=150,null=True)
+    paid_status=models.BooleanField(default=False,null=True)
+    Status=models.CharField(max_length=200,choices=choices,null=True,default='ordered')
 
     def __str__(self):
-        return self.Product_id.ProductName
+        return str(self.customers)
+
+class CartOrderItems(models.Model):
+    order=models.ForeignKey(Orders,on_delete=models.CASCADE)
+    invoice_No=models.CharField(max_length=100)
+    item=models.CharField(max_length=150)
+    quantity=models.IntegerField()
+    Image=models.CharField(max_length=200)
+    Price=models.FloatField()
+    Total=models.FloatField(null=True)
+
+    def __str__(self):
+        return self.order
+    def image_tag(self):
+        return mark_safe('<img src="%s" width="50" height="50"/> ' % (self.Image))
+
+
+class ProductReviewed(models.Model):
+    RATING=(
+        ('1','1'),
+        ('2','2'),
+        ('3','3'),
+        ('4','4'),
+        ('5','5'),
+    )
+    user=models.ForeignKey(Profile,on_delete=models.CASCADE)
+    Product=models.ForeignKey(Product,on_delete=models.CASCADE)
+    review_text=models.TextField()
+    review_rating=models.CharField(max_length=150,choices=RATING)
+
+    def __str__(self):
+        return self.review_rating
 
